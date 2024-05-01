@@ -50,7 +50,7 @@
             var request = new ScrobbleRequest
             {
                 Track = item.Name,
-                Artist = item.Artists.First(),
+                Artist = item.AlbumArtists.First(),
                 Timestamp = Helpers.CurrentTimestamp(),
 
                 ApiKey = Strings.Keys.LastfmApiKey,
@@ -91,7 +91,7 @@
             var request = new NowPlayingRequest
             {
                 Track = item.Name,
-                Artist = item.Artists.First(),
+                Artist = item.AlbumArtists.First(),
 
                 ApiKey = Strings.Keys.LastfmApiKey,
                 Method = Strings.Methods.NowPlaying,
@@ -139,7 +139,7 @@
         /// <returns></returns>
         public async Task<bool> LoveTrack(Audio item, LastfmUser user, bool love = true)
         {
-            var artist = item.Artists.FirstOrDefault();
+            var artist = item.AlbumArtists.FirstOrDefault();
             if (artist == null) {
                 return false;
             }
